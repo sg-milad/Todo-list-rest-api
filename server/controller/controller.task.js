@@ -33,6 +33,11 @@ const getAllTasks = async (req, res, next) => {
     const tasks = await Task.find({
       listId: req.params.listid,
     }).sort({ createdAt: -1 });
+    if (!tasks) {
+      return res.status(404).json({
+        message: "Tasks not found",
+      });
+    }
     res.status(200).json({
       tasks,
     });

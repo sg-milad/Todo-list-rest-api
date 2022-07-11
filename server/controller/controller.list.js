@@ -24,6 +24,11 @@ const creatList = async (req, res, next) => {
 const getAllLists = async (req, res, next) => {
   try {
     const lists = await List.find({}).sort({ createdAt: -1 });
+    if (!lists) {
+      return res.status(404).json({
+        message: "Lists not found",
+      });
+    }
     res.status(200).json({
       lists,
     });
