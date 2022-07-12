@@ -11,6 +11,7 @@ built with express.js mongodb mongoose
 3- npm start
 
 ```
+visit http://localhost:4000/lists
 
 ## document
 
