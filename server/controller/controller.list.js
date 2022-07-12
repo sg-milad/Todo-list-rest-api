@@ -9,7 +9,7 @@ const creatList = async (req, res, next) => {
       description,
     });
     res.status(201).json({
-      message: "List created successfully",
+      list,
     });
   } catch (err) {
     if (err.errors) {
@@ -56,7 +56,7 @@ const updateList = async (req, res, next) => {
       });
     }
     res.status(200).json({
-      message: "List updated successfully",
+      message: `List ${list._id} updated successfully`,
     });
   } catch (err) {
     if (BSONTypeError(err)) {
@@ -83,7 +83,7 @@ const deleteList = async (req, res, next) => {
       });
     }
     res.status(200).json({
-      message: "List deleted successfully",
+      message: `List ${list._id} deleted successfully`,
     });
   } catch (err) {
     if (BSONTypeError(err)) {

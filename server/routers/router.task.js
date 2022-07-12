@@ -20,12 +20,12 @@ router.post("/:listid/tasks", controller.creatTask);
  * PATCH /lists/:listId/tasks/:taskId
  * Update an existing task
  */
-router.put("/:listid/task/:taskid", controller.updateTask);
+router.patch("/:listid/tasks/:taskid", controller.updateTask);
 
 /**
  * DELETE /lists/:listId/tasks/:taskId
  * Delete a task
  */
-router.delete("/:listid/task/:taskid", controller.deleteTask);
+router.delete("/:listid/tasks/:taskid", controller.deleteTask);
 
 module.exports = router;

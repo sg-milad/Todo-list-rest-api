@@ -17,10 +17,10 @@ router.post("/", cotroller.creatList);
 router.get("/", cotroller.getAllLists);
 
 /**
- * Put /lists/:id
+ * Patch /lists/:id
  * Update a specified list
  */
-router.put("/:listid", cotroller.updateList);
+router.patch("/:listid", cotroller.updateList);
 
 /**
  * DELETE /lists/:id

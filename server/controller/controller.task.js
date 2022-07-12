@@ -16,7 +16,7 @@ const creatTask = async (req, res, next) => {
       listId: req.params.listid,
     });
     res.status(201).json({
-      message: "Task created successfully",
+      task,
     });
   } catch (err) {
     if (err.errors) {
@@ -64,13 +64,14 @@ const updateTask = async (req, res, next) => {
       title,
       completed,
     });
+    console.log(task);
     if (!task) {
       return res.status(404).json({
         message: "Task not found",
       });
     }
     res.status(200).json({
-      message: "Task updated successfully",
+      message: `Task ${task._id}  updated successfully`,
     });
   } catch (err) {
     if (BSONTypeError(err)) {
@@ -97,7 +98,7 @@ const deleteTask = async (req, res, next) => {
       });
     }
     res.status(200).json({
-      message: "Task deleted successfully",
+      message: `Task ${task._id} deleted successfully`,
     });
   } catch (err) {
     if (BSONTypeError(err)) {
