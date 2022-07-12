@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const TaskSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: [true, "Task title is required"],
+    required: [true, "title is required"],
     minlength: 1,
     trim: true,
   },

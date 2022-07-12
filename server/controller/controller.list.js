@@ -8,13 +8,19 @@ const creatList = async (req, res, next) => {
       title,
       description,
     });
+
     res.status(201).json({
       list,
     });
   } catch (err) {
-    if (err.errors) {
+    if (err.errors.title) {
       return res.status(400).json({
         message: err.errors.title.message,
+      });
+    }
+    if (err.errors.description) {
+      return res.status(400).json({
+        message: err.errors.description.message,
       });
     }
     next(err);
@@ -24,9 +30,9 @@ const creatList = async (req, res, next) => {
 const getAllLists = async (req, res, next) => {
   try {
     const lists = await List.find({}).sort({ createdAt: -1 });
-    if (!lists) {
-      return res.status(404).json({
-        message: "Lists not found",
+    if (lists.length === 0) {
+      return res.status(204).json({
+        message: "Lists is empty",
       });
     }
     res.status(200).json({
@@ -41,9 +47,9 @@ const updateList = async (req, res, next) => {
   const { title, description } = req.body;
   const { listid } = req.params;
   try {
-    if (req.body.title === undefined || req.body.description === undefined) {
+    if (req.body.title === undefined && req.body.description === undefined) {
       return res.status(400).json({
-        message: "List description|title is required",
+        message: "description and title is required",
       });
     }
     const list = await List.findByIdAndUpdate(listid, {
@@ -65,9 +71,14 @@ const updateList = async (req, res, next) => {
         message: "id is not valid",
       });
     }
-    if (err.errors) {
+    if (err.errors.title) {
       return res.status(400).json({
         message: err.errors.title.message,
+      });
+    }
+    if (err.errors.description) {
+      return res.status(400).json({
+        message: err.errors.description.message,
       });
     }
     next(err);

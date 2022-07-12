@@ -4,14 +4,14 @@ const ListSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, "List title is required"],
+      required: [true, "title is required"],
       minlength: 1,
       trim: true,
       maxlength: 200,
     },
     description: {
       type: String,
-      required: [true, "List description is required"],
+      required: [true, "description is required"],
       minlength: 1,
       trim: true,
     },
