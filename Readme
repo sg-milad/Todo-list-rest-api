@@ -1,0 +1,11 @@
+## Install
+
+```sh
+1- git clone https://github.com/sg-milad/Todo-list-rest-api
+2- npm install
+3- npm start
+```
+
+document postman [https://documenter.getpostman.com/view/19098780/UzJSHYiZ](https://documenter.getpostman.com/view/19098780/UzJSHYiZ)
+
+Then visit [http://localhost:4000/lists](http://localhost:4000/lists)
