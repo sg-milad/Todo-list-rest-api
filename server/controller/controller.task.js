@@ -64,14 +64,14 @@ const updateTask = async (req, res, next) => {
       title,
       completed,
     });
-    console.log(task);
     if (!task) {
       return res.status(404).json({
         message: "Task not found",
       });
     }
     res.status(200).json({
-      message: `Task ${task._id}  updated successfully`,
+      id: task._id,
+      message: `Task updated successfully`,
     });
   } catch (err) {
     if (BSONTypeError(err)) {
@@ -98,7 +98,8 @@ const deleteTask = async (req, res, next) => {
       });
     }
     res.status(200).json({
-      message: `Task ${task._id} deleted successfully`,
+      id: task._id,
+      message: `Task deleted successfully`,
     });
   } catch (err) {
     if (BSONTypeError(err)) {

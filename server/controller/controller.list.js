@@ -56,7 +56,8 @@ const updateList = async (req, res, next) => {
       });
     }
     res.status(200).json({
-      message: `List ${list._id} updated successfully`,
+      id: list._id,
+      message: `List updated successfully`,
     });
   } catch (err) {
     if (BSONTypeError(err)) {
@@ -83,7 +84,8 @@ const deleteList = async (req, res, next) => {
       });
     }
     res.status(200).json({
-      message: `List ${list._id} deleted successfully`,
+      id: list._id,
+      message: `List deleted successfully`,
     });
   } catch (err) {
     if (BSONTypeError(err)) {
